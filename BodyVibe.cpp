@@ -45,12 +45,16 @@ double hitungTDEE(double bmr, int aktivitas) {
             return 0;
     }
 }
-
+// Fungsi untuk menghitung konsumsi gula harian maksimal
+double hitungGulaMaksimal(double tdee) {
+    return (tdee * 0.10) / 4; // 1 gram gula = 4 kkal
+}
+    
 int main() {
     double berat, tinggi;
     int usia, aktivitas;
     string gender;
-    
+
     cout << "Body Vibe" << endl;
     cout << "Masukkan berat badan (kg): ";
     cin >> berat;
@@ -68,13 +72,14 @@ int main() {
     double imt = hitungIMT(berat, tinggi);
     double bmr = hitungBMR(berat, tinggi, usia, gender);
     double tdee = hitungTDEE(bmr, aktivitas);
+    double gulaMaksimal = hitungGulaMaksimal(tdee);
     string kategori = kategoriIMT(imt);
 
     cout << "\nHasil:\n";
     cout << "IMT Anda: " << imt << " (" << kategori << ")" << endl;
     cout << "BMR Anda: " << bmr << " kkal" << endl;
     cout << "Kebutuhan kalori harian (TDEE): " << tdee << " kkal" << endl;
+    cout << "Konsumsi gula harian maksimal: " << gulaMaksimal << " gram" << endl;
 
     return 0;
 }
-
